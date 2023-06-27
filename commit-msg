@@ -1,0 +1,68 @@
+#!/bin/sh
+
+#Following the Conventional commit standard : https://www.conventionalcommits.org/en/v1.0.0/#summary
+# Test regex: https://regex101.com/r/dYaXqM/1
+# Example of commits that do not work
+# commmit message that will fail
+# bad: this commit will also fail
+
+#Commits that work
+#fix: successful commit message without scope
+#fix(scope): successful fixed product bug using scope
+#fix: A commit that is to long is not readable and when the maximum length will be reached and this line will not be valid 
+#build: changes that affect the build of the project
+#chore: Changes that does not affect the source code or test code
+#ci: Changes to configuration of Continues Integrations
+#docs: Only Documentation changes
+#feat: MUST be used when a commit adds a new feature to your application or library.
+#fix: MUST be used when a commit represents a bug fix for your application.
+#refactor: Code refactoring
+#revert: revert to previous commit
+#perf: Perfomance improvements
+#style: Code style changes
+#test: Adding test code
+Color_Off='\033[0m'       # Text Reset
+# Regular Colors
+Black='\033[0;30m'        # Black
+Red='\033[1;31m'          # Red
+Green='\033[1;32m'        # Green
+Yellow='\033[1;33m'       # Yellow
+Blue='\033[1;34m'         # Blue
+Purple='\033[0;35m'       # Purple
+Cyan='\033[0;36m'         # Cyan
+White='\033[0;37m'        # White
+
+if ! head -1 "$1" | grep -qE "^(build|chore|ci|docs|feat|fix|perf|refactor|revert|perf|style|test)(\(.+?\))?: .{1,}$"; then
+	echo -e "${Red}" >&2
+    echo "Error: Commit failed!" >&2
+	echo "Your commit message is not following conventional commit standard." >&2
+	echo -e "${Yellow}" >&2
+	echo "Usage:" >&2
+	echo "<build|chore|ci|docs|feat|fix|perf|refactor|revert|perf|style|test>(optional scope): <description>"  >&2
+	echo -e "${Blue}" >&2
+	echo "Types allowed:" >&2
+	echo "build: changes that affect the build of the project"
+	echo "chore: Changes that does not affect the source code or test code"
+	echo "ci: Changes to configuration of Continues Integrations"
+	echo "docs: Only Documentation changes"
+	echo "feat: MUST be used when a commit adds a new feature to your application or library"
+	echo "fix: MUST be used when a commit represents a bug fix for your application"
+	echo "refactor: Code refactoring"
+	echo "revert: revert to previous commit"
+	echo "perf: Perfomance improvements"
+	echo "style: Code style changes"
+	echo "test: Adding test code"
+	echo -e "${Green}" >&2
+	echo "Examples:"  >&2
+	echo "fix: this is a successful commit message without scope" >&2
+	echo "fix(bug): this is also a successful commit message using the scope: bug" >&2
+    echo -e "${Color_Off}"  >&2
+    exit 1
+fi
+if ! head -1 "$1" | grep -qE "^.{1,80}$"; then
+	echo -e "${Red}" >&2
+    echo "Error: Commit failed!" >&2
+    echo "Your commit message is too long (max 80 char)." >&2
+	echo -e "${Color_Off}"  >&2
+    exit 1
+fi
