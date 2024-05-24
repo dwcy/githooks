@@ -36,17 +36,17 @@ Test regex: https://regex101.com/r/dYaXqM/1
 
 ### Valid Convention types
 
-> build: changes that affect the build of the project
-> chore: Changes that does not affect the source code or test code
-> ci: Changes to configuration of Continues Integrations
-> docs: Only Documentation changes
-> feat: MUST be used when a commit adds a new feature to your application or library.
-> fix: MUST be used when a commit represents a bug fix for your application.
-> refactor: Code refactoring
-> revert: revert to previous commit
-> perf: Perfomance improvements
-> style: Code style changes
-> test: Adding test code
+- build: changes that affect the build of the project
+- chore: Changes that does not affect the source code or test code
+- ci: Changes to configuration of Continues Integrations
+- docs: Only Documentation changes
+- feat: MUST be used when a commit adds a new feature to your application or library.
+- fix: MUST be used when a commit represents a bug fix for your application.
+- refactor: Code refactoring
+- revert: revert to previous commit
+- perf: Perfomance improvements
+- style: Code style changes
+- test: Adding test code
 
 ### Scopes
 The scope provides additional contextual information.
