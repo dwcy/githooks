@@ -14,7 +14,8 @@ Following the Conventional commit standard : https://www.conventionalcommits.org
 Test regex: https://regex101.com/r/dYaXqM/1
 
 ## Commits that work
-```
+
+```sh
 > fix: successful commit message without scope
 > fix(scope): successful fixed product bug using scope
 > fix: A commit that is to long is not readable and when the maximum length will be reached and this line will not be valid 
